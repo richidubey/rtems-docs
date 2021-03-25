@@ -58,12 +58,13 @@ actually :math:`2^{63} - 1`.
 
 .. _SchedulerSMPPriorityAffinity:
 
-Arbitrary Processor Affinity Priority SMP Scheduler
+Strong Arbitrary Processor Affinity Priority SMP Scheduler
 ---------------------------------------------------
 
-A fixed-priority scheduler which uses a table of chains with one chain per
-priority level for the ready tasks.  The maximum priority level is
-configurable.  By default, the maximum priority level is 255 (256 priority
-levels).  This scheduler supports arbitrary task processor affinities.  The
-worst-case run-time complexity of some scheduler operations exceeds
-:math:`O(n)` while :math:`n` is the count of ready tasks.
+A job-level fixed-priority scheduler that supports arbitrary task processor
+affinities and schedules all the tasks optimally, i.e. it schedules the tasks
+in a manner which ensures the lowest total sum of priorities of tasks scheduled
+(which means more higher priority tasks being scheduled), without violating any
+task's processor affinity. By default, the maximum priority level is 255 (256
+priority levels). The worst-case run-time complexity of the scheduler
+operations is upto :math:`O(n)` while :math:`n` is the count of ready tasks.
